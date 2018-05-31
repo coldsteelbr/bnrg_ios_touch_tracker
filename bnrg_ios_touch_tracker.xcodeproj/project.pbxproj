@@ -14,6 +14,8 @@
 		30F9A49F20C0045C00F4AE66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 30F9A49D20C0045C00F4AE66 /* LaunchScreen.storyboard */; };
 		30F9A4AA20C0045C00F4AE66 /* bnrg_ios_touch_trackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F9A4A920C0045C00F4AE66 /* bnrg_ios_touch_trackerTests.swift */; };
 		30F9A4B520C0045C00F4AE66 /* bnrg_ios_touch_trackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F9A4B420C0045C00F4AE66 /* bnrg_ios_touch_trackerUITests.swift */; };
+		30F9A4C320C0068D00F4AE66 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F9A4C220C0068D00F4AE66 /* Line.swift */; };
+		30F9A4C520C006FB00F4AE66 /* DrawView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F9A4C420C006FB00F4AE66 /* DrawView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		30F9A4B020C0045C00F4AE66 /* bnrg_ios_touch_trackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bnrg_ios_touch_trackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30F9A4B420C0045C00F4AE66 /* bnrg_ios_touch_trackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bnrg_ios_touch_trackerUITests.swift; sourceTree = "<group>"; };
 		30F9A4B620C0045C00F4AE66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30F9A4C220C0068D00F4AE66 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		30F9A4C420C006FB00F4AE66 /* DrawView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				30F9A49B20C0045C00F4AE66 /* Assets.xcassets */,
 				30F9A49D20C0045C00F4AE66 /* LaunchScreen.storyboard */,
 				30F9A4A020C0045C00F4AE66 /* Info.plist */,
+				30F9A4C220C0068D00F4AE66 /* Line.swift */,
+				30F9A4C420C006FB00F4AE66 /* DrawView.swift */,
 			);
 			path = bnrg_ios_touch_tracker;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F9A4C320C0068D00F4AE66 /* Line.swift in Sources */,
 				30F9A49720C0044C00F4AE66 /* ViewController.swift in Sources */,
+				30F9A4C520C006FB00F4AE66 /* DrawView.swift in Sources */,
 				30F9A49520C0044C00F4AE66 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
