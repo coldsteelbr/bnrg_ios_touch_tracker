@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawView: UIView{
+class DrawView: UIView, UIGestureRecognizerDelegate{
     //
     //  Data
     //
@@ -23,6 +23,8 @@ class DrawView: UIView{
             }
         }
     }
+    
+    var moveRecognizer: UIPanGestureRecognizer!
     
     //
     // Properties
@@ -79,6 +81,12 @@ class DrawView: UIView{
         // long press
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(DrawView.longPress(_:)))
         addGestureRecognizer(longPressRecognizer)
+        
+        // pan / move
+        moveRecognizer = UIPanGestureRecognizer(target: self, action: #selector(DrawView.moveLine(_:)))
+        moveRecognizer.delegate = self
+        moveRecognizer.cancelsTouchesInView = false
+        addGestureRecognizer(moveRecognizer)
     }
     
     @objc func doubleTap(_ gestureRecognizer: UIGestureRecognizer){
@@ -148,6 +156,10 @@ class DrawView: UIView{
         }
     }
     
+    @objc func moveLine(_ gestureRecognizer: UIPanGestureRecognizer){
+        print("Recognized a pan")
+    }
+    
     func stroke(_ line: Line){
         let path = UIBezierPath()
         path.lineWidth = lineThickess
@@ -156,6 +168,10 @@ class DrawView: UIView{
         path.move(to: line.begin)
         path.addLine(to: line.end)
         path.stroke()
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
     override func draw(_ rect: CGRect) {
