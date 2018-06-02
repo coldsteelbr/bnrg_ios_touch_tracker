@@ -15,11 +15,22 @@ class DrawView: UIView{
     
     var currentLines = [NSValue:Line]()
     var finishedLines = [Line]()
-    var selectedLineIndex: Int?
+    var selectedLineIndex: Int? {
+        didSet{
+            if selectedLineIndex == nil {
+                let menu = UIMenuController.shared
+                menu.setMenuVisible(false, animated: true)
+            }
+        }
+    }
     
     //
     // Properties
     //
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
     
     @IBInspectable var finishedLineColor: UIColor = UIColor.black {
         didSet{
@@ -44,6 +55,7 @@ class DrawView: UIView{
             setNeedsDisplay()
         }
     }
+    
     
     //
     //  Logic
@@ -81,7 +93,38 @@ class DrawView: UIView{
         let point = gestureRecognizer.location(in: self)
         selectedLineIndex = indexOfLine(at: point)
         
+        // grabbing the munu conroller
+        let menu = UIMenuController.shared
+        
+        if selectedLineIndex != nil {
+            // making DrawView the target of menu item action messages
+            becomeFirstResponder()
+            
+            // creating a new "delete" UIMenuItem
+            let deleteItem = UIMenuItem(title: "Delete", action: #selector(DrawView.deleteLine(_:)))
+            menu.menuItems = [deleteItem]
+            
+            // telling the menu where it should come from and show it
+            let targetRect = CGRect(x: point.x, y: point.y, width: 2, height: 2)
+            menu.setTargetRect(targetRect, in: self)
+            menu.setMenuVisible(true, animated: true)
+        } else {
+            // hiding the menu if no line is selected
+            menu.setMenuVisible(false, animated: true)
+        }
+        
         setNeedsDisplay()
+    }
+    
+    @objc func deleteLine(_ sender: UIMenuController){
+        // remove the selected line from the list of finishedLines
+        if let index = selectedLineIndex {
+            finishedLines.remove(at: index)
+            selectedLineIndex = nil
+            
+            // redraw everything
+            setNeedsDisplay()
+        }
     }
     
     func stroke(_ line: Line){
